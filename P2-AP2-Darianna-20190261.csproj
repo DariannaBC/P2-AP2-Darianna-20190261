@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>P2_AP2_Darianna_20190261</RootNamespace>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="UI\Consultas\bus.jpg" />
+    <None Remove="UI\Registros\agregar.png" />
+    <None Remove="UI\Registros\bus.jpg" />
+    <None Remove="UI\Registros\eli.jpg" />
+    <None Remove="UI\Registros\guar.jpg" />
+    <None Remove="UI\Registros\nue.jpg" />
+    <None Remove="UI\Registros\remover.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DATA\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="UI\Consultas\bus.jpg" />
+    <Resource Include="UI\Registros\agregar.png" />
+    <Resource Include="UI\Registros\bus.jpg" />
+    <Resource Include="UI\Registros\eli.jpg" />
+    <Resource Include="UI\Registros\guar.jpg" />
+    <Resource Include="UI\Registros\nue.jpg" />
+    <Resource Include="UI\Registros\remover.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DATA\datosProyectos.Db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
