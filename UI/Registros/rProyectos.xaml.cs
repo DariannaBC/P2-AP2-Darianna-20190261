@@ -1,4 +1,5 @@
-﻿using System;
+﻿using P2_AP2_Darianna_20190261.BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -52,6 +53,19 @@ namespace P2_AP2_Darianna_20190261.UI.Registros
         private void RemoverFila_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        private void LlenarComboTipoDeTareas()
+        {
+            this.tipoTareaComboBox.ItemsSource = TareasBLL.GetTareas();
+            this.tipoTareaComboBox.SelectedValuePath = "TareaId";
+            this.tipoTareaComboBox.DisplayMemberPath = "TipoTarea";
+
+
+
+            if (tipoTareaComboBox.Items.Count > 0)
+            {
+                tipoTareaComboBox.SelectedIndex = 0;
+            }
         }
     }
 }
