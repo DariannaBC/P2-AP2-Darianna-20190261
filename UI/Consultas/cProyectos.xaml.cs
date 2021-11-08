@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using P2_AP2_Darianna_20190261.BLL;
+using P2_AP2_Darianna_20190261.Entidades;
 
 namespace P2_AP2_Darianna_20190261.UI.Consultas
 {
@@ -26,6 +28,34 @@ namespace P2_AP2_Darianna_20190261.UI.Consultas
 
         private void BuscarCriterioButton_Click(object sender, RoutedEventArgs e)
         {
+            var lista = new List<Proyectos>();
+            if (CriterioTextBox.Text.Trim().Length >0)
+            {
+                switch (FiltroComboBox.SelectedIndex)
+                {
+                    case 0:
+                        int.TryParse(CriterioTextBox.Text, out int ProyectoId);
+                        lista = ProyectosBLL.GetList(a => a.TipoId == ProyectoId);
+                        break;
+
+                    case 1:
+                        lista = ProyectosBLL.GetList(a => a.DescripcionProyecto.ToLower().Contains(CriterioTextBox.Text.ToLower()));
+                        break;
+                }
+            }
+            else
+            {
+                lista = ProyectosBLL.GetList(c => true);
+            }
+
+            if (DesdeDatePicker.SelectedDate != null)
+                lista = lista.Where(c => c.Fecha.Date >= DesdeDatePicker.SelectedDate).ToList();
+
+            if (HastaDatePicker.SelectedDate != null)
+                lista = lista.Where(c => c.Fecha.Date <= HastaDatePicker.SelectedDate).ToList();
+
+            DetalleDataGrid.ItemsSource = null;
+            DetalleDataGrid.ItemsSource = lista;
 
         }
     }
