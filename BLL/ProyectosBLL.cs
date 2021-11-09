@@ -10,7 +10,7 @@ using P2_AP2_Darianna_20190261.Entidades;
 
 namespace P2_AP2_Darianna_20190261.BLL
 {
-  public  class ProyectosBLL
+    public class ProyectosBLL
     {
         public static bool Guardar(Proyectos proyecto)
         {
@@ -33,7 +33,7 @@ namespace P2_AP2_Darianna_20190261.BLL
                 contexto.Proyectos.Add(proyecto);
                 paso = contexto.SaveChanges() > 0;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
@@ -41,6 +41,7 @@ namespace P2_AP2_Darianna_20190261.BLL
             {
                 contexto.Dispose();
             }
+
             return paso;
         }
 
@@ -48,9 +49,10 @@ namespace P2_AP2_Darianna_20190261.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
+
             try
             {
-                contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectosDetalle Where TipoId ={ proyecto.TipoId}");
+                contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectosDetalle Where TipoId={proyecto.TipoId}");
                 foreach (var item in proyecto.Detalle)
                 {
                     contexto.Entry(item).State = EntityState.Added;
@@ -74,7 +76,7 @@ namespace P2_AP2_Darianna_20190261.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
-            try 
+            try
             {
                 var proyecto = contexto.Proyectos.Find(id);
                 if (proyecto != null)
@@ -93,7 +95,6 @@ namespace P2_AP2_Darianna_20190261.BLL
             }
 
             return paso;
-            
         }
 
         public static bool Existe(int id)
@@ -102,7 +103,7 @@ namespace P2_AP2_Darianna_20190261.BLL
             bool encontrado = false;
             try
             {
-                 encontrado = contexto.Proyectos.Any(e => e.TipoId == id);
+                encontrado = contexto.Proyectos.Any(e => e.TipoId == id);
             }
             catch (Exception)
             {
@@ -116,7 +117,7 @@ namespace P2_AP2_Darianna_20190261.BLL
             return encontrado;
         }
 
-        public static Proyectos Buscar (int id )
+        public static Proyectos Buscar(int id)
         {
             Contexto contexto = new Contexto();
             Proyectos proyecto;
@@ -133,17 +134,17 @@ namespace P2_AP2_Darianna_20190261.BLL
             {
                 contexto.Dispose();
             }
-            return proyecto;
 
+            return proyecto;
         }
-         
+
         public static List<Proyectos> GetList(Expression<Func<Proyectos, bool>> criterio)
         {
-            List<Proyectos> Lista = new List<Proyectos>();
+            List<Proyectos> lista = new List<Proyectos>();
             Contexto contexto = new Contexto();
             try
             {
-                Lista = contexto.Proyectos.Where(criterio).ToList();
+                lista = contexto.Proyectos.Where(criterio).ToList();
             }
             catch (Exception)
             {
@@ -154,7 +155,7 @@ namespace P2_AP2_Darianna_20190261.BLL
                 contexto.Dispose();
             }
 
-            return Lista;
+            return lista;
         }
 
         public static List<Proyectos> GetProyectos()
@@ -173,10 +174,8 @@ namespace P2_AP2_Darianna_20190261.BLL
             {
                 contexto.Dispose();
             }
+
             return lista;
         }
-
-
     }
-
 }

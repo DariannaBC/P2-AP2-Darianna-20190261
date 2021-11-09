@@ -29,16 +29,17 @@ namespace P2_AP2_Darianna_20190261.UI.Consultas
         private void BuscarCriterioButton_Click(object sender, RoutedEventArgs e)
         {
             var lista = new List<Proyectos>();
-            if (CriterioTextBox.Text.Trim().Length >0)
+
+            if (CriterioTextBox.Text.Trim().Length > 0)
             {
                 switch (FiltroComboBox.SelectedIndex)
                 {
-                    case 0:
+                    case 0: //ProyectoId
                         int.TryParse(CriterioTextBox.Text, out int ProyectoId);
                         lista = ProyectosBLL.GetList(a => a.TipoId == ProyectoId);
                         break;
 
-                    case 1:
+                    case 1: //DescripcionProyecto
                         lista = ProyectosBLL.GetList(a => a.DescripcionProyecto.ToLower().Contains(CriterioTextBox.Text.ToLower()));
                         break;
                 }
@@ -56,7 +57,6 @@ namespace P2_AP2_Darianna_20190261.UI.Consultas
 
             DetalleDataGrid.ItemsSource = null;
             DetalleDataGrid.ItemsSource = lista;
-
         }
     }
 }

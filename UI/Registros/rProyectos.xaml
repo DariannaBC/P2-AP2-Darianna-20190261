@@ -86,7 +86,7 @@
                         <Label Content="Nuevo"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="GuardarButton"  Height="70" Width="70" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="GuardarButton_Click">
+                <Button x:Name="GuardarButton"  Height="70" Width="70" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="GuardarButton_Click" >
                     <StackPanel Orientation="Vertical">
                         <Image Source="/UI/Registros/guar.jpg" Stretch="None"  />
                         <Label Content="Guardar"/>
