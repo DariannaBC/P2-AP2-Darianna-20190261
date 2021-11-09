@@ -39,7 +39,7 @@ namespace P2_AP2_Darianna_20190261.UI.Consultas
                         lista = ProyectosBLL.GetList(a => a.TipoId == ProyectoId);
                         break;
 
-                    case 1: //DescripcionProyecto
+                    case 1: //DescripcionProyectp
                         lista = ProyectosBLL.GetList(a => a.DescripcionProyecto.ToLower().Contains(CriterioTextBox.Text.ToLower()));
                         break;
                 }

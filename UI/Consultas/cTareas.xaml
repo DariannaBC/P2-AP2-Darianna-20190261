@@ -33,10 +33,10 @@
                 </StackPanel>
 
                 <StackPanel VerticalAlignment="Bottom">
-                    <Button x:Name="BuscarCriterioButton" Height="30" Width="30" Click="BuscarCriterioButton_Click" Margin="10,0">
+                    <Button x:Name="BuscarCriterioButton" Height="30" Width="90" Click="BuscarCriterioButton_Click" Margin="10,0">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/UI/Consultas/bus.jpg" />
-                            
+                            <Image Source="C:\Users\USER\source\repos\P2-AP1-Junior-20190009\Resources\simbolo-de-interfaz-de-lupa-de-busqueda.png" Stretch="Uniform"/>
+                            <Label Content="Buscar"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>

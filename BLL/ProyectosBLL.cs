@@ -28,6 +28,7 @@ namespace P2_AP2_Darianna_20190261.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
+
             try
             {
                 contexto.Proyectos.Add(proyecto);
@@ -35,13 +36,13 @@ namespace P2_AP2_Darianna_20190261.BLL
             }
             catch (Exception)
             {
+
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
-
             return paso;
         }
 
@@ -52,7 +53,7 @@ namespace P2_AP2_Darianna_20190261.BLL
 
             try
             {
-                contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectosDetalle Where TipoId={proyecto.TipoId}");
+                contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectosDetalle Where TipoId ={proyecto.TipoId}");
                 foreach (var item in proyecto.Detalle)
                 {
                     contexto.Entry(item).State = EntityState.Added;
@@ -62,13 +63,13 @@ namespace P2_AP2_Darianna_20190261.BLL
             }
             catch (Exception)
             {
+
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
-
             return paso;
         }
 
@@ -83,17 +84,18 @@ namespace P2_AP2_Darianna_20190261.BLL
                 {
                     contexto.Entry(proyecto).State = EntityState.Deleted;
                     paso = contexto.SaveChanges() > 0;
+
                 }
             }
             catch (Exception)
             {
+
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
-
             return paso;
         }
 
@@ -107,13 +109,13 @@ namespace P2_AP2_Darianna_20190261.BLL
             }
             catch (Exception)
             {
+
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
-
             return encontrado;
         }
 
@@ -121,20 +123,19 @@ namespace P2_AP2_Darianna_20190261.BLL
         {
             Contexto contexto = new Contexto();
             Proyectos proyecto;
-
             try
             {
                 proyecto = contexto.Proyectos.Include(e => e.Detalle).Where(p => p.TipoId == id).SingleOrDefault();
             }
             catch (Exception)
             {
+
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
-
             return proyecto;
         }
 
@@ -148,13 +149,13 @@ namespace P2_AP2_Darianna_20190261.BLL
             }
             catch (Exception)
             {
+
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
-
             return lista;
         }
 
@@ -168,13 +169,13 @@ namespace P2_AP2_Darianna_20190261.BLL
             }
             catch (Exception)
             {
+
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
-
             return lista;
         }
     }

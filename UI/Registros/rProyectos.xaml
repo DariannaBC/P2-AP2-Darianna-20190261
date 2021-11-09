@@ -14,7 +14,7 @@
                     <TextBox x:Name="proyectoIdTextBox" Height="25" Width="100" Text="{Binding TipoId}"/>
                     <Button x:Name="BuscarIDButton" Height="30" Width="30" Click="BuscarIDButton_Click" Margin="10,0">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/UI/Registros/bus.jpg"/>
+                            <Image Source="/UI/Registros/bus.jpg" />
                             
                         </StackPanel>
                     </Button>
@@ -73,22 +73,22 @@
                     <Button x:Name="RemoverFila" Width="120" Height="26" HorizontalAlignment="Left" Click="RemoverFila_Click">
                         <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
                             <Image Source="/UI/Registros/remover.jpg"/>
-                            <Label Content="Remover" Height="32"/>
+                            <Label Content="Remover Fila" Height="32"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,10" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Button x:Name="NuevoButton" Height="70" Width="70" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="NuevoButton_Click" >
+                <Button x:Name="NuevoButton" Height="70" Width="70" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="NuevoButton_Click">
                     <StackPanel Orientation="Vertical">
-                        <Image Source="/UI/Registros/nue.jpg" Stretch="None" />
+                        <Image Source="/UI/Registros/nue.jpg" Stretch="None"/>
                         <Label Content="Nuevo"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="GuardarButton"  Height="70" Width="70" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="GuardarButton_Click" >
+                <Button x:Name="GuardarButton"  Height="70" Width="70" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="GuardarButton_Click">
                     <StackPanel Orientation="Vertical">
-                        <Image Source="/UI/Registros/guar.jpg" Stretch="None"  />
+                        <Image Source="/UI/Registros/guar.jpg" Stretch="None"/>
                         <Label Content="Guardar"/>
                     </StackPanel>
                 </Button>

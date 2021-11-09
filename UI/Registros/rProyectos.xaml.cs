@@ -36,9 +36,13 @@ namespace P2_AP2_Darianna_20190261.UI.Registros
             var Proyectos = ProyectosBLL.Buscar(Utilidades.ToInt(proyectoIdTextBox.Text));
 
             if (Proyectos != null)
+            {
                 this.proyectos = Proyectos;
+            }
             else
+            {
                 this.proyectos = new Proyectos();
+            }
             Cargar();
         }
 
@@ -51,7 +55,7 @@ namespace P2_AP2_Darianna_20190261.UI.Registros
                 TipoId = tareas.TareaId,
                 TipoTarea = tareas.TipoTarea,
                 Requerimentos = requerimientosDeTareaTextBox.Text,
-                Tiempo = (int)Convert.ToInt32(tiempoMinutosTextBox.Text)
+                Tiempo = Convert.ToInt32(tiempoMinutosTextBox.Text)
             });
 
             int total = Convert.ToInt32(tiempoTotalTextBox.Text);
@@ -65,7 +69,9 @@ namespace P2_AP2_Darianna_20190261.UI.Registros
         private void RemoverFila_Click(object sender, RoutedEventArgs e)
         {
             if (DetalleDataGrid.SelectedIndex < 0)
-                return;//Con estas 2 lineas ya no vuelve a pasar
+            {
+                return;
+            }
             if (DetalleDataGrid.Items.Count >= 1 && DetalleDataGrid.SelectedIndex <= DetalleDataGrid.Items.Count - 1)
             {
                 ProyectosDetalle proyec = (ProyectosDetalle)DetalleDataGrid.SelectedItem;
@@ -88,18 +94,23 @@ namespace P2_AP2_Darianna_20190261.UI.Registros
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Validar())
+            {
                 return;
+            }
+
+            llenarProyec();
 
             var paso = ProyectosBLL.Guardar(this.proyectos);
 
             if (paso)
             {
                 Limpiar();
-                MessageBox.Show("Su proyecto se ha guardado  o modificado con exito!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Su proyecto ha sido guardado o modificado correctamente");
             }
             else
-                MessageBox.Show("Transaccion Fallida!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
-
+            {
+                MessageBox.Show("Su proyecto no ha podido ser almacenado...");
+            }
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
@@ -109,11 +120,12 @@ namespace P2_AP2_Darianna_20190261.UI.Registros
             if (ProyectosBLL.Eliminar(this.proyectos.TipoId))
             {
                 Limpiar();
-                MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                MessageBox.Show("Su proyecto ha sido eliminado con exito");
             }
             else
-                MessageBox.Show("No fue posible eliminarlo", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+            {
+                MessageBox.Show("No fue posible eliminarlo");
+            }
         }
 
         private void LlenarComboTipoDeTareas()
@@ -141,6 +153,8 @@ namespace P2_AP2_Darianna_20190261.UI.Registros
             proyectos = new Proyectos();
             Cargar();
             LlenarComboTipoDeTareas();
+            descripcionProyectoTextBox.Text = "";
+            proyectoIdTextBox.Text = "0";
         }
 
         private bool Validar()
@@ -150,19 +164,17 @@ namespace P2_AP2_Darianna_20190261.UI.Registros
             if (proyectoIdTextBox.Text.Length == 0)
             {
                 esValido = false;
-                MessageBox.Show("El campo proyecto Id no puede quedar vacio", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("El campo Proyecto Id no puede quedar vacio");
             }
-
             if (descripcionProyectoTextBox.Text.Length == 0)
             {
                 esValido = false;
-                MessageBox.Show("El campo Descripcio del proyecto no puede quedar vacio", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("El campo Descripcion del proyecto no puede quedar vacio");
             }
-
             if (string.IsNullOrWhiteSpace(tipoTareaComboBox.Text))
             {
                 esValido = false;
-                MessageBox.Show("Debe seleccionar un tipo de tarea", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Debe seleccionar un tipo de tarea");
             }
             if (requerimientosDeTareaTextBox.Text.Length == 0)
             {
@@ -172,10 +184,17 @@ namespace P2_AP2_Darianna_20190261.UI.Registros
             if (tiempoMinutosTextBox.Text.Length == 0)
             {
                 esValido = false;
-                MessageBox.Show("El campo de tiempo en minutos no puede quedar vacio");
+                MessageBox.Show("El campo tiempo en minutos no puede quedar vacio");
             }
 
             return esValido;
+        }
+
+        private void llenarProyec()
+        {
+            proyectos.TiempoTotal = Convert.ToInt32(tiempoTotalTextBox.Text);
+            proyectos.DescripcionProyecto = descripcionProyectoTextBox.Text;
+            proyectos.Fecha = (DateTime)fechaDatePicker.SelectedDate;
         }
     }
 }
