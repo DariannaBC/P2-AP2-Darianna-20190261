@@ -58,10 +58,7 @@ namespace P2_AP2_Darianna_20190261.UI.Registros
             Cargar();
         }
 
-        private void NuevoButton_Click(object sender, RoutedEventArgs e)
-        {
-            Limpiar();
-        }
+       
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -152,6 +149,11 @@ namespace P2_AP2_Darianna_20190261.UI.Registros
                 MessageBox.Show("El campo seleccionado no se puede quedar vacio");
             }
             return esValido;
+        }
+
+        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        {
+            Limpiar();
         }
     }
 }
