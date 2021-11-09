@@ -70,6 +70,32 @@ namespace P2_AP2_Darianna_20190261.BLL
             return paso;
         }
 
+        public static bool Eliminar(int id)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+            try 
+            {
+                var proyecto = contexto.Proyectos.Find(id);
+                if (proyecto != null)
+                {
+                    contexto.Entry(proyecto).State = EntityState.Deleted;
+                    paso = contexto.SaveChanges() > 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+            
+        }
+
         public static bool Existe(int id)
         {
             Contexto contexto = new Contexto();

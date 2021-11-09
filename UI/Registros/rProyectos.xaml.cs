@@ -22,7 +22,7 @@ namespace P2_AP2_Darianna_20190261.UI.Registros
     public partial class rProyectos : Window
     {
         private Proyectos proyectos = new Proyectos();
-        private Tareas Tareas = new Tareas();
+        private Tareas tareas = new Tareas();
         public rProyectos()
         {
             InitializeComponent();
@@ -43,12 +43,12 @@ namespace P2_AP2_Darianna_20190261.UI.Registros
 
         private void AgregarDetalleButton_Click(object sender, RoutedEventArgs e)
         {
-            Tareas = TareasBLL.Buscar(Convert.ToInt32(tipoTareaComboBox.SelectedValue));
+            tareas = TareasBLL.Buscar(Convert.ToInt32(tipoTareaComboBox.SelectedValue));
             proyectos.Detalle.Add( new ProyectosDetalle
                 {
-                TipoId = Tareas.TareaId,
-                tipoTarea = Tareas.TipoTarea,
-                requerimientos  = requerimientosDeTareaTextBox.Text,
+                TipoId = tareas.TareaId,
+                TipoTarea = tareas.TipoTarea,
+                Requerimentos  = requerimientosDeTareaTextBox.Text,
                 Tiempo = (int )Convert.ToInt32(tiempoMinutosTextBox.Text)
             });
 
