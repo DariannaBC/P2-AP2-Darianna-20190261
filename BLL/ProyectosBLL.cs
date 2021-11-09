@@ -89,6 +89,27 @@ namespace P2_AP2_Darianna_20190261.BLL
 
             return encontrado;
         }
+
+        public static Proyectos Buscar (int id )
+        {
+            Contexto contexto = new Contexto();
+            Proyectos proyecto;
+
+            try
+            {
+                proyecto = contexto.Proyectos.Include(e => e.Detalle).Where(p => p.TipoId == id).SingleOrDefault();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return proyecto;
+
+        }
          
         public static List<Proyectos> GetList(Expression<Func<Proyectos, bool>> criterio)
         {
